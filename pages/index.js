@@ -2,11 +2,11 @@ import axios from 'axios'
 
 export default () => {
   const [slug, setSlug] = React.useState('')
-  const [link, setLink] = React.useState('')
+  const [url, setUrl] = React.useState('')
 
   const onSubmit = e => {
     e.preventDefault()
-    axios.post('/redirect', { slug, link })
+    axios.post('/redirect', { slug, url })
   }
 
   return (
@@ -19,7 +19,7 @@ export default () => {
         </label>
         <label>
           Link
-          <input value={link} onChange={e => setLink(e.target.value)} />
+          <input value={url} onChange={e => setUrl(e.target.value)} />
         </label>
         <button>Submit</button>
       </form>
