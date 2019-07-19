@@ -46,7 +46,7 @@ export default () => {
     <>
       <main>
         <h1>
-          btfl<span>.</span>link
+          b<span>eau</span>t<span>i</span>f<span>u</span>l<span>.</span>link
         </h1>
         <p>the last URL shortener you will ever need.</p>
         <p className="disclaimer">(well, maybe not yet)</p>
