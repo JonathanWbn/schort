@@ -14,6 +14,8 @@ Market research however has shown this might not be ovious enough.
 
 **API**: Serverless Node lambdas.
 
+**Database**: [mongoDB](https://www.mongodb.com/cloud)
+
 ### Future
 I won't be doing much here in the near future.
 I'm currently focused on [another side project of mine](https://github.com/JonathanWbn/clipp.li).
