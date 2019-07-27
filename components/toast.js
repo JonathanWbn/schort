@@ -10,7 +10,7 @@ const useToast = () => {
     setShowToast(Boolean(toast))
 
     let timeoutId
-    if (toast && toast.disappear) timeoutId = setTimeout(() => setShowToast(false), 1500)
+    if (toast && toast.disappear) timeoutId = setTimeout(() => setShowToast(false), 3000)
     return () => clearTimeout(timeoutId)
   }, [toast])
 
