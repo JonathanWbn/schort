@@ -3,7 +3,7 @@ import axios from 'axios'
 import { ToastContext } from '../pages'
 import { copyToClipboard, formatSlug } from '../utils'
 
-export default () => {
+export default function Form() {
   const [slug, setSlug] = React.useState('')
   const [url, setUrl] = React.useState('')
 

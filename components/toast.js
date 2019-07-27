@@ -2,7 +2,10 @@ import classnames from 'classnames'
 
 import { ToastContext } from '../pages'
 
-const useAutoHideToast = ({ toast, showToast, setShowToast, setToast }) => {
+const useToast = () => {
+  const { toast, setToast } = React.useContext(ToastContext)
+  const [showToast, setShowToast] = React.useState(false)
+
   React.useEffect(() => {
     setShowToast(Boolean(toast))
 
@@ -17,14 +20,13 @@ const useAutoHideToast = ({ toast, showToast, setShowToast, setToast }) => {
       timeoutId = setTimeout(() => setToast(null), 300)
     }
     return () => clearTimeout(timeoutId)
-  }, [showToast])
+  }, [showToast, setToast])
+
+  return [toast, showToast]
 }
 
-export default () => {
-  const { toast, setToast } = React.useContext(ToastContext)
-  const [showToast, setShowToast] = React.useState(false)
-
-  useAutoHideToast({ toast, setToast, showToast, setShowToast })
+export default function Toast() {
+  const [toast, showToast] = useToast()
 
   return (
     <>

@@ -4,7 +4,7 @@ import Toast from '../components/toast'
 
 export const ToastContext = React.createContext()
 
-export default () => {
+export default function Page() {
   const [toast, setToast] = React.useState(null)
 
   return (
