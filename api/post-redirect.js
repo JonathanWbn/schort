@@ -9,7 +9,7 @@ export default async (req, res) => {
 
   const existingRedirect = await redirectsCollection.findOne({ slug })
 
-  if (existingRedirect) res.status(400).send('Redirect already exists')
+  if (existingRedirect) res.status(400).send('This slug already exists.')
   else {
     await redirectsCollection.insertOne({ slug, url })
     res.json({ success: true })

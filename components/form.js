@@ -1,12 +1,22 @@
 import axios from 'axios'
 
+import { ToastContext } from '../pages'
+
 export default () => {
   const [slug, setSlug] = React.useState('')
   const [url, setUrl] = React.useState('')
 
+  const { setToast } = React.useContext(ToastContext)
+
   const onSubmit = async e => {
     e.preventDefault()
-    await axios.post('/redirect', { slug, url })
+    try {
+      await axios.post('/redirect', { slug, url })
+    } catch (error) {
+      setToast({
+        message: error.response.data || 'Something went wrong. :/',
+      })
+    }
   }
 
   return (
