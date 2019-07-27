@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 import { ToastContext } from '../pages'
-import { copyToClipboard } from '../utils'
+import { copyToClipboard, formatSlug } from '../utils'
 
 export default () => {
   const [slug, setSlug] = React.useState('')
@@ -32,7 +32,7 @@ export default () => {
     <>
       <form onSubmit={onSubmit}>
         <input required type="URL" value={url} onChange={e => setUrl(e.target.value)} placeholder="URL" />
-        <input required value={slug} onChange={e => setSlug(e.target.value)} placeholder="Slug" />
+        <input required value={slug} onChange={e => setSlug(formatSlug(e.target.value))} placeholder="Slug" />
         <div className="row-wrapper">
           <div className="preview">https://btfl.link/{slug}</div>
           <button>Create</button>

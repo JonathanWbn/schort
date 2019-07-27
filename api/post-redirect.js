@@ -1,8 +1,9 @@
+import { formatSlug } from '../utils'
 import getDb from './db'
 
 export default async (req, res) => {
   const { url } = req.body
-  const slug = req.body.slug.replace(/ /g, '').toLowerCase()
+  const slug = formatSlug(req.body.slug)
 
   const db = await getDb()
   const redirectsCollection = await db.collection('redirects')
