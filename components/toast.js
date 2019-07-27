@@ -1,31 +1,39 @@
+import classnames from 'classnames'
+
 import { ToastContext } from '../pages'
 
-const useAutoHideToast = ({ toast, setShowToast, setToast }) => {
+const useAutoHideToast = ({ toast, showToast, setShowToast, setToast }) => {
   React.useEffect(() => {
     setShowToast(Boolean(toast))
 
-    const timeoutIds = []
-    if (toast) {
-      const timeoutId = setTimeout(() => {
-        setShowToast(false)
-        const timeoutId = setTimeout(() => setToast(null), 300)
-        timeoutIds.push(timeoutId)
-      }, 1500)
-      timeoutIds.push(timeoutId)
-    }
-    return () => timeoutIds.forEach(clearTimeout)
+    let timeoutId
+    if (toast && toast.disappear) timeoutId = setTimeout(() => setShowToast(false), 1500)
+    return () => clearTimeout(timeoutId)
   }, [toast])
+
+  React.useEffect(() => {
+    let timeoutId
+    if (!showToast) {
+      timeoutId = setTimeout(() => setToast(null), 300)
+    }
+    return () => clearTimeout(timeoutId)
+  }, [showToast])
 }
 
 export default () => {
   const { toast, setToast } = React.useContext(ToastContext)
   const [showToast, setShowToast] = React.useState(false)
 
-  useAutoHideToast({ toast, setToast, setShowToast })
+  useAutoHideToast({ toast, setToast, showToast, setShowToast })
 
   return (
     <>
-      <div className={`toast ${!showToast ? 'hide' : ''}`}>{toast && toast.message}</div>
+      <div
+        className={classnames('toast', !showToast && 'hide', toast && toast.onClick && 'is-clickable')}
+        onClick={toast && toast.onClick}
+      >
+        {toast && toast.message}
+      </div>
       <style jsx>{`
         .toast {
           position: absolute;
@@ -41,6 +49,10 @@ export default () => {
 
         .toast.hide {
           top: -50px;
+        }
+
+        .toast.is-clickable {
+          cursor: pointer;
         }
       `}</style>
     </>

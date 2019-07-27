@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 import { ToastContext } from '../pages'
+import { copyToClipboard } from '../utils'
 
 export default () => {
   const [slug, setSlug] = React.useState('')
@@ -11,10 +12,18 @@ export default () => {
   const onSubmit = async e => {
     e.preventDefault()
     try {
-      await axios.post('/redirect', { slug, url })
+      const { data } = await axios.post('/redirect', { slug, url })
+      setToast({
+        message: 'Successfully created link. Click me to copy.',
+        onClick: () => {
+          copyToClipboard(`https://btfl.link/${data.slug}`)
+          setToast({ message: 'Copied.', disappear: true })
+        },
+      })
     } catch (error) {
       setToast({
         message: error.response.data || 'Something went wrong. :/',
+        disappear: true,
       })
     }
   }
