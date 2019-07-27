@@ -39,7 +39,15 @@ class MyApp extends App {
           }
 
           body {
-            background-color: #f26e03;
+            background-color: var(--main-accent);
+          }
+
+          :root {
+            --main-accent: #f26e03;
+            --white: white;
+            --light-white: rgba(255, 255, 255, 0.5);
+            --background-light: rgba(255, 255, 255, 0.2);
+            --background-white: rgba(255, 255, 255, 0.8);
           }
         `}</style>
       </Container>

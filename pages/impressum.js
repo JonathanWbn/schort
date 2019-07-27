@@ -19,6 +19,10 @@ export default function Impressum() {
       </main>
       <style jsx>
         {`
+          :global(body) {
+            background-color: white !important;
+          }
+
           main {
             max-width: 800px;
             margin: 0px auto;
