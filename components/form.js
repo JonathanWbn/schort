@@ -1,4 +1,5 @@
 import axios from 'axios'
+import classnames from 'classnames'
 
 import { ToastContext } from '../pages'
 import { copyToClipboard, formatSlug } from '../utils'
@@ -6,25 +7,35 @@ import { copyToClipboard, formatSlug } from '../utils'
 export default function Form() {
   const [slug, setSlug] = React.useState('')
   const [url, setUrl] = React.useState('')
+  const [isLoading, setIsLoading] = React.useState(false)
 
-  const { setToast } = React.useContext(ToastContext)
+  const { toast, setToast } = React.useContext(ToastContext)
+
+  React.useEffect(() => {
+    if (toast) setToast({ ...toast, disappear: 300 })
+  }, [slug, url]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const onSubmit = async e => {
     e.preventDefault()
     try {
+      setIsLoading(true)
       const { data } = await axios.post('/redirect', { slug, url })
+      setSlug('')
+      setUrl('')
       setToast({
         message: 'Successfully created link. Click me to copy.',
         onClick: () => {
           copyToClipboard(`https://btfl.link/${data.slug}`)
-          setToast({ message: 'Copied.', disappear: true })
+          setToast({ message: 'Copied.', disappear: 2000 })
         },
       })
     } catch (error) {
       setToast({
         message: error.response.data || 'Something went wrong. :/',
-        disappear: true,
+        disappear: 3000,
       })
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -35,7 +46,9 @@ export default function Form() {
         <input required value={slug} onChange={e => setSlug(formatSlug(e.target.value))} placeholder="Slug" />
         <div className="row-wrapper">
           <div className="preview">https://btfl.link/{slug}</div>
-          <button>Create</button>
+          <button className={classnames(isLoading && 'loading')} disabled={isLoading}>
+            Create
+          </button>
         </div>
       </form>
       <style jsx>{`
@@ -74,6 +87,11 @@ export default function Form() {
         button:hover {
           background-color: var(--background-white);
           color: var(--main-accent);
+        }
+        button.loading {
+          cursor: not-allowed;
+          color: var(--light-white);
+          background-color: var(--background-light);
         }
         .preview {
           background-color: var(--background-light);
