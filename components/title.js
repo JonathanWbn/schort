@@ -9,12 +9,12 @@ export default function Title() {
         h1,
         p {
           color: var(--white);
-          font-weight: 500;
           font-size: 25px;
         }
         h1 {
           font-size: 50px;
           margin-bottom: 10px;
+          font-weight: normal;
         }
         h1 span {
           color: var(--light-white);

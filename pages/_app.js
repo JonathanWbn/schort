@@ -15,7 +15,7 @@ class MyApp extends App {
           <meta name="keywords" content="btfl url shortener" />
           <meta name="author" content="Jonathan Wieben" />
           <title>btfl.link</title>
-          <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/css?family=Montserrat:500" rel="stylesheet" />
         </Head>
         <Component {...pageProps} />
         <style global jsx>{`

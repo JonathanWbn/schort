@@ -45,7 +45,6 @@ export default function Toast() {
           padding: 15px 20px;
           font-size: 15px;
           color: ${(toast && toast.color) || 'var(--main-accent)'};
-          font-weight: 500;
           transition: top 0.3s ease;
         }
 

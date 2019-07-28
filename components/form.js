@@ -91,7 +91,7 @@ export default function Form() {
           font-size: 15px;
           transition: 0.3s all;
           cursor: pointer;
-          font-weight: 600;
+          font-weight: bold;
           margin-left: 2px;
         }
         button:hover {
@@ -109,7 +109,7 @@ export default function Form() {
           color: var(--white);
           font-size: 15px;
           padding: 25px;
-          font-weight: 600;
+          font-weight: bold;
           overflow: scroll;
         }
         .row-wrapper {
