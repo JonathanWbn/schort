@@ -41,6 +41,11 @@ export default function Page() {
         footer a {
           color: white;
           margin: 0px 10px;
+          text-decoration: none;
+        }
+
+        footer a:focus {
+          text-decoration: underline;
         }
       `}</style>
     </>

@@ -82,6 +82,10 @@ export default function Form() {
         input::placeholder {
           color: var(--light-white);
         }
+        input:focus,
+        button:focus {
+          background-color: rgba(255, 255, 255, 0.4);
+        }
         button {
           background-color: var(--background-light);
           border: none;
