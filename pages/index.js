@@ -17,6 +17,9 @@ export default function Page() {
         </main>
       </ToastContext.Provider>
       <footer>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/JonathanWbn/btfl.link">
+          GitHub
+        </a>
         <a href="/impressum">Impressum</a>
       </footer>
       <style jsx>{`
@@ -37,6 +40,7 @@ export default function Page() {
 
         footer a {
           color: white;
+          margin: 0px 10px;
         }
       `}</style>
     </>

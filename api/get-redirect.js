@@ -14,6 +14,6 @@ export default async (req, res) => {
     res.writeHead(302, { Location: redirect.url })
     res.end()
   } else {
-    res.send(`There is no redirect for ${slug}`)
+    res.send(`There is no redirect for ${slug}.`)
   }
 }

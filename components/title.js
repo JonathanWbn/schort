@@ -4,8 +4,7 @@ export default function Title() {
       <h1>
         b<span>eau</span>t<span>i</span>f<span>u</span>l<span>.</span>link
       </h1>
-      <p>the last URL shortener you will ever need.</p>
-      <p className="disclaimer">(well, maybe not yet)</p>
+      <p>just another URL shortener.</p>
       <style jsx>{`
         h1,
         p {
@@ -19,9 +18,6 @@ export default function Title() {
         }
         h1 span {
           color: var(--light-white);
-        }
-        .disclaimer {
-          font-size: 5px;
         }
       `}</style>
     </>
