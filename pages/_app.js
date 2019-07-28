@@ -48,6 +48,8 @@ class MyApp extends App {
             --light-white: rgba(255, 255, 255, 0.5);
             --background-light: rgba(255, 255, 255, 0.2);
             --background-white: rgba(255, 255, 255, 0.8);
+            --success: #15bf7a;
+            --error: #f9300a;
           }
         `}</style>
       </Container>

@@ -11,9 +11,15 @@ export default function Form() {
 
   const { toast, setToast } = React.useContext(ToastContext)
 
-  React.useEffect(() => {
+  const onChangeSlug = e => {
     if (toast) setToast({ ...toast, disappear: 300 })
-  }, [slug, url]) // eslint-disable-line react-hooks/exhaustive-deps
+    setSlug(formatSlug(e.target.value))
+  }
+
+  const onChangeUrl = e => {
+    if (toast) setToast({ ...toast, disappear: 300 })
+    setUrl(e.target.value)
+  }
 
   const onSubmit = async e => {
     e.preventDefault()
@@ -28,11 +34,15 @@ export default function Form() {
           copyToClipboard(`https://btfl.link/${data.slug}`)
           setToast({ message: 'Copied.', disappear: 2000 })
         },
+        background: 'var(--success)',
+        color: 'var(--white)',
       })
     } catch (error) {
       setToast({
         message: error.response.data || 'Something went wrong. :/',
         disappear: 3000,
+        background: 'var(--error)',
+        color: 'var(--white)',
       })
     } finally {
       setIsLoading(false)
@@ -42,8 +52,8 @@ export default function Form() {
   return (
     <>
       <form onSubmit={onSubmit}>
-        <input required type="URL" value={url} onChange={e => setUrl(e.target.value)} placeholder="URL" />
-        <input required value={slug} onChange={e => setSlug(formatSlug(e.target.value))} placeholder="Slug" />
+        <input required type="URL" value={url} onChange={onChangeUrl} placeholder="URL" />
+        <input required value={slug} onChange={onChangeSlug} placeholder="Slug" />
         <div className="row-wrapper">
           <div className="preview">https://btfl.link/{slug}</div>
           <button className={classnames(isLoading && 'loading')} disabled={isLoading}>
