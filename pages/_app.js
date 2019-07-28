@@ -15,12 +15,12 @@ class MyApp extends App {
           <meta name="keywords" content="btfl url shortener" />
           <meta name="author" content="Jonathan Wieben" />
           <title>btfl.link</title>
-          <link href="https://fonts.googleapis.com/css?family=Montserrat:500" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/css?family=Quicksand:500" rel="stylesheet" />
         </Head>
         <Component {...pageProps} />
         <style global jsx>{`
           html {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Quicksand', sans-serif;
             font-size: 16px;
             word-spacing: 1px;
             -ms-text-size-adjust: 100%;
@@ -36,6 +36,11 @@ class MyApp extends App {
             box-sizing: border-box;
             margin: 0;
             outline: none;
+          }
+
+          button,
+          input {
+            font-family: 'Quicksand', sans-serif;
           }
 
           body {
