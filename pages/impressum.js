@@ -1,6 +1,12 @@
+import Head from 'next/head'
+
 export default function Impressum() {
   return (
     <>
+      <Head>
+        <title>btfl.link | Impressum</title>
+        <link href="https://fonts.googleapis.com/css?family=Quicksand:500" rel="stylesheet" />
+      </Head>
       <main>
         <h1>Impressum</h1>
         <p>
@@ -21,6 +27,7 @@ export default function Impressum() {
         {`
           :global(body) {
             background-color: white !important;
+            font-family: Quicksand;
           }
 
           main {
