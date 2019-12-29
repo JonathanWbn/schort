@@ -17,7 +17,7 @@ export default function Impressum() {
           20535 Hamburg
         </p>
         <p>
-          Telefon: +49 17655501946
+          Telefon: <a href="tel:+4917655501946">+49 17655501946</a>
           <br />
           E-Mail: <a href="mailto:joni.wieben@icloud.com">joni.wieben@icloud.com</a>
           <br />
