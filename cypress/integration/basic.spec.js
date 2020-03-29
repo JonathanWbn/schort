@@ -1,5 +1,5 @@
-describe('basic stuff', function() {
-  it('loads essential ui', function() {
+describe('basic stuff', function () {
+  it('loads essential ui', function () {
     cy.visit('/')
     cy.contains('just another URL shortener')
     cy.get('form').contains('https://btfl.link/')
@@ -8,7 +8,7 @@ describe('basic stuff', function() {
     cy.contains('Impressum')
   })
 
-  it('allows to navigate to Impressum', function() {
+  it('allows to navigate to Impressum', function () {
     cy.visit('/')
     cy.contains('Impressum').click()
     cy.contains('Impressum')

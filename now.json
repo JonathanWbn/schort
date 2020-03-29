@@ -1,7 +1,9 @@
 {
   "version": 2,
-  "name": "btfl.link",
-  "builds": [{ "src": "next.config.js", "use": "@now/next" }, { "src": "api/*.js", "use": "@now/node" }],
+  "builds": [
+    { "src": "next.config.js", "use": "@now/next" },
+    { "src": "api/*.js", "use": "@now/node" }
+  ],
   "routes": [
     { "src": "/redirect", "methods": ["POST"], "dest": "api/post-redirect.js" },
     { "src": "/(?!(impressum))[a-z0-9]+", "methods": ["GET"], "dest": "api/get-redirect.js" }

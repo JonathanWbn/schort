@@ -12,17 +12,17 @@ export default function Form() {
 
   const { toast, setToast } = React.useContext(ToastContext)
 
-  const setSlugValue = value => {
+  const setSlugValue = (value) => {
     if (toast) setToast({ ...toast, disappear: 300 })
     setSlug(formatSlug(value))
   }
 
-  const setUrlValue = value => {
+  const setUrlValue = (value) => {
     if (toast) setToast({ ...toast, disappear: 300 })
     setUrl(value)
   }
 
-  const onSubmit = async e => {
+  const onSubmit = async (e) => {
     e.preventDefault()
     try {
       setIsLoading(true)
@@ -57,7 +57,7 @@ export default function Form() {
           required
           type="URL"
           value={url}
-          onChange={e => setUrlValue(e.target.value)}
+          onChange={(e) => setUrlValue(e.target.value)}
           placeholder="URL"
           autoFocus
         />
@@ -65,7 +65,7 @@ export default function Form() {
           <input
             required
             value={slug}
-            onChange={e => setSlugValue(e.target.value)}
+            onChange={(e) => setSlugValue(e.target.value)}
             placeholder="Slug"
             className="slug-input"
           />

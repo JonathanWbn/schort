@@ -18,4 +18,4 @@ export function copyToClipboard(text) {
   }
 }
 
-export const formatSlug = str => str && str.replace(/ /g, '').toLowerCase()
+export const formatSlug = (str) => str && str.replace(/ /g, '').toLowerCase()
