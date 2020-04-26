@@ -25,6 +25,15 @@ export default function Form() {
   const onSubmit = async (e) => {
     e.preventDefault()
     try {
+      if (!/^[a-z0-9]+$/.test(slug)) {
+        setToast({
+          message: 'Your slug shall be alphanumeric.',
+          disappear: 3000,
+          background: 'var(--error)',
+          color: 'var(--white)',
+        })
+        return
+      }
       setIsLoading(true)
       const { data } = await axios.post('/redirect', { slug, url })
       setSlug('')
