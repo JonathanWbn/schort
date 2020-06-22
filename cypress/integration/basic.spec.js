@@ -14,6 +14,6 @@ describe('basic stuff', function () {
     cy.contains('Impressum')
     cy.contains('Jonathan Wieben')
     cy.contains('Alfredstr. 61')
-    cy.contains('joni.wieben@icloud.com')
+    cy.contains('jwieben@hey.com')
   })
 })
