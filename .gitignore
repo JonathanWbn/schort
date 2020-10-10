@@ -5,4 +5,4 @@
 /cypress/support
 /cypress/plugins
 .DS_Store
-.now
+.vercel

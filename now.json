@@ -6,6 +6,6 @@
   ],
   "routes": [
     { "src": "/redirect", "methods": ["POST"], "dest": "api/post-redirect.js" },
-    { "src": "/(?!(impressum))[a-z0-9]+", "methods": ["GET"], "dest": "api/get-redirect.js" }
+    { "src": "/(?!(impressum))[a-z0-9-]+", "methods": ["GET"], "dest": "api/get-redirect.js" }
   ]
 }

@@ -25,9 +25,9 @@ export default function Form() {
   const onSubmit = async (e) => {
     e.preventDefault()
     try {
-      if (!/^[a-z0-9]+$/.test(slug)) {
+      if (!/^[a-z0-9-]+$/.test(slug)) {
         setToast({
-          message: 'Your slug shall be alphanumeric.',
+          message: 'Your slug shall only include numerals, letters and/or hyphens.',
           disappear: 3000,
           background: 'var(--error)',
           color: 'var(--white)',
