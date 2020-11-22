@@ -1,25 +1,13 @@
+import React from 'react'
+
 export default function Title() {
   return (
     <>
-      <h1>
-        b<span>eau</span>t<span>i</span>f<span>u</span>l<span>.</span>link
+      <h1 className="text-white text-5xl">
+        b<span className="text-white text-opacity-50">eau</span>t<span className="text-white text-opacity-50">i</span>f
+        <span className="text-white text-opacity-50">u</span>l<span className="text-white text-opacity-50">.</span>link
       </h1>
-      <p>just another URL shortener.</p>
-      <style jsx>{`
-        h1,
-        p {
-          color: var(--white);
-          font-size: 25px;
-        }
-        h1 {
-          font-size: 50px;
-          margin-bottom: 10px;
-          font-weight: normal;
-        }
-        h1 span {
-          color: var(--light-white);
-        }
-      `}</style>
+      <p className="text-white text-2xl mb-5">just another URL shortener.</p>
     </>
   )
 }

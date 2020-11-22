@@ -1,0 +1,35 @@
+@tailwind base;
+
+/* Write your own custom base styles here */
+
+/* Start purging... */
+@tailwind components;
+/* Stop purging. */
+
+html,
+body {
+  @apply bg-gray-50 dark:bg-gray-900;
+}
+
+/* Start purging... */
+@tailwind utilities;
+/* Stop purging. */
+
+/* Your own custom utilities */
+
+html {
+  font-family: 'Quicksand', sans-serif;
+}
+
+button,
+input {
+  font-family: 'Quicksand', sans-serif;
+}
+
+body {
+  @apply bg-accent-1;
+}
+
+.input {
+  @apply bg-bg-light p-5 text-white text-sm placeholder-white placeholder-opacity-60 focus:bg-bg-white-light outline-none;
+}

@@ -1,8 +1,5 @@
 /node_modules
 .next
 .env
-/cypress/videos
-/cypress/support
-/cypress/plugins
 .DS_Store
 .vercel

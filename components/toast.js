@@ -1,4 +1,5 @@
 import classnames from 'classnames'
+import React from 'react'
 
 import { ToastContext } from '../pages'
 
@@ -29,33 +30,18 @@ export default function Toast() {
   const [toast, showToast] = useToast()
 
   return (
-    <>
-      <div
-        className={classnames('toast', !showToast && 'hide', toast && toast.onClick && 'is-clickable')}
-        onClick={toast && toast.onClick}
-      >
-        {toast && toast.message}
-      </div>
-      <style jsx>{`
-        .toast {
-          position: absolute;
-          top: 25px;
-          right: 25px;
-          background-color: ${(toast && toast.background) || 'var(--white)'};
-          padding: 15px 20px;
-          font-size: 15px;
-          color: ${(toast && toast.color) || 'var(--main-accent)'};
-          transition: top 0.3s ease;
-        }
-
-        .toast.hide {
-          top: -50px;
-        }
-
-        .toast.is-clickable {
-          cursor: pointer;
-        }
-      `}</style>
-    </>
+    <div
+      className={classnames(
+        'absolute top-7 right-7 bg-white text-white px-4 py-3 transition-top duration-300',
+        !showToast && '-top-12',
+        toast?.type === 'error' && 'bg-red-500',
+        toast?.type === 'success' && 'bg-green-500',
+        toast?.type === 'info' && 'bg-gray-500',
+        toast?.onClick && 'cursor-pointer'
+      )}
+      onClick={toast?.onClick}
+    >
+      {toast?.message}
+    </div>
   )
 }

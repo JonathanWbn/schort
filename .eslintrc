@@ -1,6 +1,6 @@
 {
-  "plugins": ["react-hooks", "cypress"],
-  "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:cypress/recommended"],
+  "plugins": ["react-hooks"],
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
   "parser": "babel-eslint",
   "settings": {
     "react": {
@@ -11,7 +11,6 @@
     "browser": true,
     "node": true,
     "es6": true,
-    "cypress/globals": true
   },
   "globals": {
     "React": true
