@@ -34,7 +34,7 @@ export default function Form() {
         return
       }
       setIsLoading(true)
-      const { data } = await axios.post('/redirect', { slug, url })
+      const { data } = await axios.post('/api/redirect', { slug, url })
       setSlug('')
       setUrl('')
       setToast({
