@@ -1,11 +1,11 @@
-import getDb from '../db'
+import { connectToDatabase } from '../db'
 
 export default async (req, res) => {
   switch (req.method) {
     case 'GET': {
       const { slug } = req.query
 
-      const db = await getDb()
+      const db = await connectToDatabase()
       const redirectsCollection = await db.collection('redirects')
       const redirect = await redirectsCollection.findOne({ slug })
 
