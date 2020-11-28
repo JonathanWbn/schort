@@ -1,29 +1,9 @@
 @tailwind base;
-
-/* Write your own custom base styles here */
-
-/* Start purging... */
 @tailwind components;
-/* Stop purging. */
-
-html,
-body {
-  @apply bg-gray-50 dark:bg-gray-900;
-}
-
-/* Start purging... */
 @tailwind utilities;
-/* Stop purging. */
-
-/* Your own custom utilities */
 
 html {
-  font-family: 'Quicksand', sans-serif;
-}
-
-button,
-input {
-  font-family: 'Quicksand', sans-serif;
+  @apply font-quicksand;
 }
 
 body {

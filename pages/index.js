@@ -13,7 +13,7 @@ export default function Page() {
   return (
     <ToastContext.Provider value={{ toast, setToast }}>
       <Head>
-        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta name="description" content="The last URL shortener you will ever need." />
         <meta name="keywords" content="btfl url shortener" />
