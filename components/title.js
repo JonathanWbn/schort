@@ -3,11 +3,10 @@ import React from 'react'
 export default function Title() {
   return (
     <>
-      <h1 className="text-white text-5xl">
-        b<span className="text-white text-opacity-50">eau</span>t<span className="text-white text-opacity-50">i</span>f
-        <span className="text-white text-opacity-50">u</span>l<span className="text-white text-opacity-50">.</span>link
+      <h1 className="heading text-white text-4xl sm:text-5xl">
+        b<span>eau</span>t<span>i</span>f<span>u</span>l<span>.</span>link
       </h1>
-      <p className="text-white text-2xl mb-5">just another URL shortener.</p>
+      <p className="text-xl sm:text-2xl text-white text-opacity-90 mb-5">just another URL shortener.</p>
     </>
   )
 }

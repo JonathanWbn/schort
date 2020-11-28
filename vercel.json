@@ -1,5 +1,3 @@
 {
-  "redirects": [
-    { "source": "/:slug", "destination": "api/:slug", "permanent": true }
-  ]
+  "redirects": [{ "source": "/:slug", "destination": "api/:slug", "permanent": true }]
 }

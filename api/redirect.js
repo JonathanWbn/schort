@@ -1,4 +1,4 @@
-import getDb from '../db'
+import { connectToDatabase } from '../db'
 import { formatSlug } from '../utils'
 
 const btflLinkUrlRegex = /^https:\/\/btfl\.link\//
@@ -13,7 +13,7 @@ export default async (req, res) => {
         return res.status(400).send("You can't link to a btfl.link address.")
       }
 
-      const db = await getDb()
+      const db = await connectToDatabase()
       const redirectsCollection = await db.collection('redirects')
 
       const existingRedirect = await redirectsCollection.findOne({ slug })

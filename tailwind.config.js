@@ -3,7 +3,7 @@ module.exports = {
   darkMode: 'media', // 'media' or 'class'
   theme: {
     fontFamily: {
-      quicksand: ['Quicksand', 'sans-serif'],
+      caption: ['PT Sans Caption', 'sans-serif'],
     },
     extend: {
       colors: {

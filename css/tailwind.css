@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 html {
-  @apply font-quicksand;
+  @apply font-caption;
 }
 
 body {
@@ -11,5 +11,13 @@ body {
 }
 
 .input {
-  @apply bg-bg-light p-5 text-white text-sm placeholder-white placeholder-opacity-60 focus:bg-bg-white-light outline-none;
+  @apply bg-bg-light text-white p-3 sm:p-4 text-sm placeholder-white placeholder-opacity-40 focus:bg-bg-white-light focus:outline-none transition-colors;
+}
+
+.label {
+  @apply text-sm bg-bg-light text-white p-3 sm:p-4 w-20;
+}
+
+.heading > span {
+  @apply text-white text-opacity-50;
 }

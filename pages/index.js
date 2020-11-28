@@ -18,17 +18,17 @@ export default function Page() {
         <meta name="description" content="The last URL shortener you will ever need." />
         <meta name="keywords" content="btfl url shortener" />
         <meta name="author" content="Jonathan Wieben" />
-        <title>btfl.link</title>
-        <link href="https://fonts.googleapis.com/css?family=Quicksand:500" rel="stylesheet" />
+        <title>Beautiful Link</title>
+        <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Caption&display=swap" rel="stylesheet"></link>
       </Head>
 
-      <div className="container mx-auto h-screen flex flex-col">
+      <div className="container mx-auto h-screen flex flex-col p-4">
         <Toast />
         <main className="container mx-auto flex-grow flex flex-col items-center justify-center">
           <Title />
           <Form />
         </main>
-        <footer className="text-center text-white p-5">
+        <footer className="text-center text-white">
           <a target="_blank" rel="noopener noreferrer" href="https://jonathanwieben.com" className="mr-5">
             Author
           </a>
