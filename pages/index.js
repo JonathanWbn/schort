@@ -3,15 +3,10 @@ import React from 'react'
 
 import Form from '../components/form'
 import Title from '../components/title'
-import Toast from '../components/toast'
-
-export const ToastContext = React.createContext()
 
 export default function Page() {
-  const [toast, setToast] = React.useState(null)
-
   return (
-    <ToastContext.Provider value={{ toast, setToast }}>
+    <>
       <Head>
         <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -23,12 +18,11 @@ export default function Page() {
       </Head>
 
       <div className="container mx-auto h-screen flex flex-col p-4">
-        <Toast />
-        <main className="container mx-auto flex-grow flex flex-col items-center justify-center">
+        <main className="container mx-auto flex-grow flex flex-col items-center mt-10 sm:mt-0 sm:justify-center">
           <Title />
           <Form />
         </main>
-        <footer className="text-center text-white">
+        <footer className="text-center text-accent">
           <a target="_blank" rel="noopener noreferrer" href="https://jonathanwieben.com" className="mr-5">
             Author
           </a>
@@ -37,6 +31,6 @@ export default function Page() {
           </a>
         </footer>
       </div>
-    </ToastContext.Provider>
+    </>
   )
 }

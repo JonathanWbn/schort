@@ -1,53 +1,131 @@
 import axios from 'axios'
+import classnames from 'classnames'
 import React from 'react'
 
-import { ToastContext } from '../pages'
 import { copyToClipboard, formatSlug } from '../utils'
 
 export default function Form() {
   const [slug, setSlug] = React.useState('')
   const [url, setUrl] = React.useState('')
+  const [notification, setNotification] = React.useState(null)
   const [isLoading, setIsLoading] = React.useState(false)
 
-  const { toast, setToast } = React.useContext(ToastContext)
+  return (
+    <>
+      <form onSubmit={onSubmit} className="mt-10 flex flex-col w-full max-w-sm">
+        <div className="flex mb-0.5 input-wrapper">
+          <label htmlFor="url" className="label">
+            URL
+          </label>
+          <input
+            required
+            type="URL"
+            id="url"
+            value={url}
+            onChange={(e) => setUrlValue(e.target.value)}
+            autoFocus
+            placeholder="The URL you want to shorten."
+            className="input flex-grow"
+          />
+        </div>
+        <div className="flex mb-5 input-wrapper">
+          <label htmlFor="slug" className="label">
+            Slug
+          </label>
+          <input
+            required
+            value={slug}
+            placeholder="e.g. join-call"
+            id="slug"
+            onChange={(e) => setSlugValue(e.target.value)}
+            className="input flex-grow"
+          />
+        </div>
+        <button
+          className="text-base bg-accent text-white transition-colors focus:outline-none border-2 rounded border-accent focus:bg-white focus:text-accent hover:bg-white hover:text-accent p-3 sm:p-4 font-bold disabled:cursor-wait"
+          disabled={isLoading}
+        >
+          Create
+        </button>
+      </form>
+      {notification && (
+        <div className="relative w-full max-w-sm">
+          <div
+            className={classnames(
+              'w-full mt-6 absolute p-3 border rounded',
+              notification.type === 'error' && 'border-red-600',
+              notification.type === 'success' && 'border-green-600'
+            )}
+          >
+            <p
+              className={classnames(
+                'text-lg',
+                notification.type === 'error' && 'text-red-600',
+                notification.type === 'success' && 'text-green-600'
+              )}
+            >
+              {notification.message}{' '}
+            </p>
+            {notification.type === 'success' && (
+              <button
+                onClick={() => copyToClipboard(`https://btfl.link/${notification.slug}`)}
+                className="text-white text-sm bg-green-600 rounded p-2 w-full mt-4"
+              >
+                Copy {`btfl.link/${notification.slug}`}
+              </button>
+            )}
+            <button
+              className={classnames(
+                'absolute top-1 right-2 text-md leading-none',
+                notification.type === 'error' && 'text-red-600',
+                notification.type === 'success' && 'text-green-600'
+              )}
+              onClick={() => setNotification(null)}
+            >
+              x
+            </button>
+          </div>
+        </div>
+      )}
+    </>
+  )
 
-  const setSlugValue = (value) => {
-    if (toast) setToast({ ...toast, disappear: 300 })
+  function setSlugValue(value) {
+    setNotification(null)
     setSlug(formatSlug(value))
   }
 
-  const setUrlValue = (value) => {
-    if (toast) setToast({ ...toast, disappear: 300 })
+  function setUrlValue(value) {
+    setNotification(null)
     setUrl(value)
   }
 
-  const onSubmit = async (e) => {
+  async function onSubmit(e) {
     e.preventDefault()
+
     try {
-      if (!/^[a-z0-9-]+$/.test(slug)) {
-        setToast({
+      if (!isValidSlug(slug)) {
+        setNotification({
           message: 'Your slug shall only include numerals, letters and/or hyphens.',
-          disappear: 3000,
           type: 'error',
         })
         return
       }
+
       setIsLoading(true)
+
       const { data } = await axios.post('/api/redirect', { slug, url })
+
       setSlug('')
       setUrl('')
-      setToast({
-        message: `Successfully created https://btfl.link/${data.slug}. Click me to copy.`,
-        onClick: () => {
-          copyToClipboard(`https://btfl.link/${data.slug}`)
-          setToast({ message: 'Copied.', disappear: 2000, type: 'info' })
-        },
+      setNotification({
+        message: 'Successfully created link.',
+        slug: data.slug,
         type: 'success',
       })
     } catch (error) {
-      setToast({
+      setNotification({
         message: error.response.data || 'Something went wrong. :/',
-        disappear: 3000,
         type: 'error',
       })
     } finally {
@@ -55,42 +133,7 @@ export default function Form() {
     }
   }
 
-  return (
-    <form onSubmit={onSubmit} className="mt-10 flex flex-col w-full max-w-sm">
-      <div className="flex mb-0.5">
-        <label htmlFor="url" className="label mr-0.5">
-          URL
-        </label>
-        <input
-          required
-          type="URL"
-          id="url"
-          value={url}
-          onChange={(e) => setUrlValue(e.target.value)}
-          autoFocus
-          placeholder="The URL you want to shorten."
-          className="input flex-grow"
-        />
-      </div>
-      <div className="flex mb-1">
-        <label htmlFor="slug" className="label mr-0.5">
-          Slug
-        </label>
-        <input
-          required
-          value={slug}
-          placeholder="e.g. join-call"
-          id="slug"
-          onChange={(e) => setSlugValue(e.target.value)}
-          className="input flex-grow"
-        />
-      </div>
-      <button
-        className="text-sm bg-bg-light text-white transition-colors focus:outline-none focus:bg-white focus:text-accent-1 hover:bg-white hover:text-accent-1 p-3 sm:p-4 font-bold"
-        disabled={isLoading}
-      >
-        Create
-      </button>
-    </form>
-  )
+  function isValidSlug(slug) {
+    return /^[a-z0-9-]+$/.test(slug)
+  }
 }

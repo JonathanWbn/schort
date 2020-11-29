@@ -7,17 +7,14 @@ module.exports = {
     },
     extend: {
       colors: {
-        'accent-1': '#f26e03',
-        'bg-light': 'rgba(255,255,255,0.2)',
-        'bg-white-light': 'rgba(255,255,255,0.4)',
-      },
-      transitionProperty: {
-        top: 'top',
+        accent: '#f26e03',
       },
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      cursor: ['disabled'],
+    },
   },
   plugins: [],
 }
