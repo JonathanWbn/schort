@@ -29,6 +29,13 @@ export default function Page() {
           <a target="_blank" rel="noopener noreferrer" href="https://github.com/JonathanWbn/btfl.link">
             GitHub
           </a>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.notion.so/jwieben/Impressum-7be1b0e1a1384c1cb9362bd1aef963d1"
+          >
+            Impressum
+          </a>
         </footer>
       </div>
     </>
