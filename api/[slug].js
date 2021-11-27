@@ -1,16 +1,14 @@
-import { connectToDatabase } from '../db'
+import { get } from '../lib/redis'
 
 export default async (req, res) => {
   switch (req.method) {
     case 'GET': {
       const { slug } = req.query
 
-      const db = await connectToDatabase()
-      const redirectsCollection = await db.collection('redirects')
-      const redirect = await redirectsCollection.findOne({ slug })
+      const redirect = await get(slug)
 
       if (redirect) {
-        res.writeHead(301, { Location: redirect.url })
+        res.writeHead(301, { Location: redirect })
         res.end()
       } else {
         res.send(`There is no redirect for ${slug}.`)

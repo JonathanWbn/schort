@@ -1,4 +1,4 @@
-import { connectToDatabase } from '../db'
+import { get, set } from '../lib/redis'
 import { formatSlug } from '../utils'
 
 const btflLinkUrlRegex = /^https:\/\/btfl\.link\//
@@ -13,14 +13,11 @@ export default async (req, res) => {
         return res.status(400).send("You can't link to a btfl.link address.")
       }
 
-      const db = await connectToDatabase()
-      const redirectsCollection = await db.collection('redirects')
-
-      const existingRedirect = await redirectsCollection.findOne({ slug })
+      const existingRedirect = await get(slug)
 
       if (existingRedirect) res.status(400).send('This slug already exists.')
       else {
-        await redirectsCollection.insertOne({ slug, url })
+        await set(slug, url)
         res.json({ success: true, slug })
       }
       break
