@@ -8,7 +8,7 @@ export default function Page() {
   return (
     <>
       <Head>
-        <link rel="shortcut icon" href="/static/favicon.svg" />
+        <link rel="shortcut icon" href="/favicon.svg" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta name="description" content="The last URL shortener you will ever need." />
         <meta name="keywords" content="btfl url shortener" />
