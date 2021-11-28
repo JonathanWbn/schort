@@ -1,4 +1,4 @@
-import { get, set } from '../lib/redis'
+import { get, set } from '@upstash/redis'
 import { formatSlug } from '../utils'
 
 const btflLinkUrlRegex = /^https:\/\/btfl\.link\//
@@ -13,7 +13,7 @@ export default async (req, res) => {
         return res.status(400).send("You can't link to a btfl.link address.")
       }
 
-      const existingRedirect = await get(slug)
+      const { data: existingRedirect } = await get(slug)
 
       if (existingRedirect) res.status(400).send('This slug already exists.')
       else {
