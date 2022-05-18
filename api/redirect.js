@@ -1,7 +1,7 @@
 import { get, set } from '@upstash/redis'
 import { formatSlug } from '../utils'
 
-const btflLinkUrlRegex = /^https:\/\/btfl\.link\//
+const btflLinkUrlRegex = /^https?:\/\/btfl\.link\//
 
 export default async (req, res) => {
   switch (req.method) {
