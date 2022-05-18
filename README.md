@@ -9,10 +9,8 @@ The name is an abbreviation for "beautiful link".
 
 ### Stack
 
-**Hosting**: [Vercel](https://vercel.com/) & [Mongo Atlas](https://www.mongodb.com/cloud/atlas).
+**Hosting**: [Vercel](https://vercel.com/) & [Upstash](https://upstash.com/redis).
 
-**Frontend**: [React](https://reactjs.org/) with [Next](https://nextjs.org/).
+**Frontend & API**: [React](https://reactjs.org/) with [Next](https://nextjs.org/).
 
-**API**: Serverless Node lambdas.
-
-**Database**: [mongoDB](https://www.mongodb.com/cloud)
+**Database**: [Redis](https://redis.io/)
