@@ -15,7 +15,7 @@ export default async (req, res) => {
 
       const { data: existingRedirect } = await get(slug)
 
-      if (existingRedirect) res.status(400).send('This slug already exists.')
+      if (existingRedirect) res.status(409).send('This slug is already taken.')
       else {
         await set(slug, url)
         res.json({ success: true, slug })

@@ -1,16 +1,66 @@
 'use client'
 
-import axios from 'axios'
 import classnames from 'classnames'
-import { useState } from 'react'
+import { useReducer } from 'react'
 
 import { formatSlug } from '../utils'
 
+function reducer(state, action) {
+  switch (action.type) {
+    case 'SET_SLUG':
+      return { ...state, slug: action.payload, notification: null }
+    case 'SET_URL':
+      return { ...state, url: action.payload, notification: null }
+    case 'ERROR':
+      return { ...state, notification: { message: action.payload, type: 'error' }, isLoading: false }
+    case 'SUCCESS':
+      return {
+        ...state,
+        notification: { message: action.payload, slug: action.slug, type: 'success' },
+        slug: '',
+        url: '',
+        isLoading: false,
+      }
+    case 'CLOSE_NOTIFICATION':
+      return { ...state, notification: null }
+    case 'START_REQUEST':
+      return { ...state, isLoading: true }
+    default:
+      return state
+  }
+}
+
 export default function Form() {
-  const [slug, setSlug] = useState('')
-  const [url, setUrl] = useState('')
-  const [notification, setNotification] = useState(null)
-  const [isLoading, setIsLoading] = useState(false)
+  const [{ slug, url, notification, isLoading }, dispatch] = useReducer(reducer, {
+    slug: '',
+    url: '',
+    notification: null,
+    isLoading: false,
+  })
+
+  async function onSubmit(e) {
+    e.preventDefault()
+
+    try {
+      const isValidSlug = /^[a-z0-9-]+$/.test(slug)
+      if (!isValidSlug) {
+        dispatch({ type: 'ERROR', payload: 'Your slug shall only include numerals, letters and/or hyphens.' })
+        return
+      }
+
+      dispatch({ type: 'START_REQUEST' })
+
+      const response = await fetch('/api/redirect', {
+        method: 'POST',
+        body: JSON.stringify({ slug, url }),
+        headers: { 'Content-Type': 'application/json' },
+      }).then((res) => (res.ok ? res.json() : res.text().then((text) => Promise.reject(text))))
+
+      dispatch({ type: 'SUCCESS', payload: 'Successfully created link.', slug: response.slug })
+    } catch (error) {
+      dispatch({ type: 'ERROR', payload: error || 'Something went wrong. :/' })
+    }
+  }
 
   return (
     <>
@@ -24,7 +74,7 @@ export default function Form() {
             type="URL"
             id="url"
             value={url}
-            onChange={(e) => setUrlValue(e.target.value)}
+            onChange={(e) => dispatch({ type: 'SET_URL', payload: e.target.value })}
             autoFocus
             placeholder="The URL you want to shorten."
             className="text-accent p-3 sm:p-4 text-sm sm:text-base placeholder-accent placeholder-opacity-40 focus:outline-none transition-colors flex-grow"
@@ -39,7 +89,7 @@ export default function Form() {
             value={slug}
             placeholder="e.g. join-call"
             id="slug"
-            onChange={(e) => setSlugValue(e.target.value)}
+            onChange={(e) => dispatch({ type: 'SET_SLUG', payload: formatSlug(e.target.value) })}
             className="text-accent p-3 sm:p-4 text-sm sm:text-base placeholder-accent placeholder-opacity-40 focus:outline-none transition-colors flex-grow"
           />
         </div>
@@ -82,7 +132,7 @@ export default function Form() {
                 notification.type === 'error' && 'text-red-600',
                 notification.type === 'success' && 'text-green-600'
               )}
-              onClick={() => setNotification(null)}
+              onClick={() => dispatch({ type: 'CLOSE_NOTIFICATION' })}
             >
               x
             </button>
@@ -91,51 +141,4 @@ export default function Form() {
       )}
     </>
   )
-
-  function setSlugValue(value) {
-    setNotification(null)
-    setSlug(formatSlug(value))
-  }
-
-  function setUrlValue(value) {
-    setNotification(null)
-    setUrl(value)
-  }
-
-  async function onSubmit(e) {
-    e.preventDefault()
-
-    try {
-      if (!isValidSlug(slug)) {
-        setNotification({
-          message: 'Your slug shall only include numerals, letters and/or hyphens.',
-          type: 'error',
-        })
-        return
-      }
-
-      setIsLoading(true)
-
-      const { data } = await axios.post('/api/redirect', { slug, url })
-
-      setSlug('')
-      setUrl('')
-      setNotification({
-        message: 'Successfully created link.',
-        slug: data.slug,
-        type: 'success',
-      })
-    } catch (error) {
-      setNotification({
-        message: error.response.data || 'Something went wrong. :/',
-        type: 'error',
-      })
-    } finally {
-      setIsLoading(false)
-    }
-  }
-
-  function isValidSlug(slug) {
-    return /^[a-z0-9-]+$/.test(slug)
-  }
 }
