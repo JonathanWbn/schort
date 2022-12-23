@@ -1,20 +1,22 @@
+'use client'
+
 import axios from 'axios'
 import classnames from 'classnames'
-import React from 'react'
+import { useState } from 'react'
 
-import { copyToClipboard, formatSlug } from '../utils'
+import { formatSlug } from '../utils'
 
 export default function Form() {
-  const [slug, setSlug] = React.useState('')
-  const [url, setUrl] = React.useState('')
-  const [notification, setNotification] = React.useState(null)
-  const [isLoading, setIsLoading] = React.useState(false)
+  const [slug, setSlug] = useState('')
+  const [url, setUrl] = useState('')
+  const [notification, setNotification] = useState(null)
+  const [isLoading, setIsLoading] = useState(false)
 
   return (
     <>
       <form onSubmit={onSubmit} className="mt-10 flex flex-col w-full max-w-sm">
-        <div className="flex mb-0.5 input-wrapper">
-          <label htmlFor="url" className="label">
+        <div className="flex mb-0.5 border-b-2 border-accent border-opacity-50 focus-within:border-opacity-100">
+          <label htmlFor="url" className="text-sm sm:text-base text-accent p-3 sm:p-4 w-14">
             URL
           </label>
           <input
@@ -25,11 +27,11 @@ export default function Form() {
             onChange={(e) => setUrlValue(e.target.value)}
             autoFocus
             placeholder="The URL you want to shorten."
-            className="input flex-grow"
+            className="text-accent p-3 sm:p-4 text-sm sm:text-base placeholder-accent placeholder-opacity-40 focus:outline-none transition-colors flex-grow"
           />
         </div>
-        <div className="flex mb-5 input-wrapper">
-          <label htmlFor="slug" className="label">
+        <div className="flex mb-5 border-b-2 border-accent border-opacity-50 focus-within:border-opacity-100">
+          <label htmlFor="slug" className="text-sm sm:text-base text-accent p-3 sm:p-4 w-14">
             Slug
           </label>
           <input
@@ -38,7 +40,7 @@ export default function Form() {
             placeholder="e.g. join-call"
             id="slug"
             onChange={(e) => setSlugValue(e.target.value)}
-            className="input flex-grow"
+            className="text-accent p-3 sm:p-4 text-sm sm:text-base placeholder-accent placeholder-opacity-40 focus:outline-none transition-colors flex-grow"
           />
         </div>
         <button
@@ -68,7 +70,7 @@ export default function Form() {
             </p>
             {notification.type === 'success' && (
               <button
-                onClick={() => copyToClipboard(`https://btfl.link/${notification.slug}`)}
+                onClick={() => navigator.clipboard.writeText(`https://btfl.link/${notification.slug}`)}
                 className="text-white text-sm bg-green-600 rounded p-2 w-full mt-4"
               >
                 Copy {`btfl.link/${notification.slug}`}

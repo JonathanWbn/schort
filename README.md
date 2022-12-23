@@ -9,8 +9,8 @@ The name is an abbreviation for "beautiful link".
 
 ### Stack
 
-**Hosting**: [Vercel](https://vercel.com/) & [Upstash](https://upstash.com/redis).
-
-**Frontend & API**: [React](https://reactjs.org/) with [Next](https://nextjs.org/).
-
-**Database**: [Redis](https://redis.io/)
+- frontend is [React](https://reactjs.org/) with [Next](https://nextjs.org/)
+- API with [Next API Routes](https://nextjs.org/docs/api-routes/introduction)
+- fast redirects with [Next Middleware](https://nextjs.org/docs/advanced-features/middleware)
+- hosted on [Vercel](https://vercel.com/)
+- database is [Redis](https://redis.io/) on [Upstash](https://upstash.com/redis)
