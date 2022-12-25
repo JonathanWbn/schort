@@ -1,4 +1,6 @@
-# URL shortener
+# Schort
+
+Just another URL shortener. Simple and fast.
 
 Check it at: [schort.me](https://schort.me/)
 
