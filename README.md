@@ -1,8 +1,6 @@
 # Schort
 
-Just another URL shortener. Simple and fast.
-
-Check it at: [schort.me](https://schort.me/)
+A simple and fast URL shortener. Check it at: [schort.me](https://schort.me/)
 
 ### Motivation
 
