@@ -1,5 +1,7 @@
 # URL shortener
 
+Check it at: [schort.me](https://schort.me/)
+
 ### Motivation
 
 I thought it would be fun to have my own URL shortener.
