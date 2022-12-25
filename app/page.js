@@ -14,7 +14,7 @@ export default function Page() {
         <a target="_blank" rel="noopener noreferrer" href="https://jonathanwieben.com" className="mr-5">
           Author
         </a>
-        <a target="_blank" rel="noopener noreferrer" href="https://github.com/JonathanWbn/btfl.link" className="mr-5">
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/JonathanWbn/schort" className="mr-5">
           GitHub
         </a>
         <a

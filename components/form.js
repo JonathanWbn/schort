@@ -120,10 +120,10 @@ export default function Form() {
             </p>
             {notification.type === 'success' && (
               <button
-                onClick={() => navigator.clipboard.writeText(`https://btfl.link/${notification.slug}`)}
+                onClick={() => navigator.clipboard.writeText(`https://schort.me/${notification.slug}`)}
                 className="text-white text-sm bg-green-600 rounded p-2 w-full mt-4"
               >
-                Copy {`btfl.link/${notification.slug}`}
+                Copy {`schort.me/${notification.slug}`}
               </button>
             )}
             <button

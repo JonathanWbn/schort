@@ -5,7 +5,7 @@
 I thought it would be fun to have my own URL shortener.
 The good slugs are already gone at [bit.ly](https://bitly.com/) or [tinyurl.com](https://tinyurl.com/), so I get a fresh start here.
 
-The name is an abbreviation for "beautiful link".
+The name is a German take on "short", as in "short link".
 
 ### Stack
 

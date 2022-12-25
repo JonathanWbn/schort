@@ -6,7 +6,7 @@ export default function Head() {
       <meta name="description" content="The last URL shortener you will ever need." />
       <meta name="keywords" content="btfl url shortener" />
       <meta name="author" content="Jonathan Wieben" />
-      <title>Beautiful Link</title>
+      <title>schort</title>
     </>
   )
 }

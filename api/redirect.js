@@ -1,7 +1,7 @@
 import { get, set } from '@upstash/redis'
 import { formatSlug } from '../utils'
 
-const btflLinkUrlRegex = /^https?:\/\/btfl\.link\//
+const btflLinkUrlRegex = /^https?:\/\/schort\.me\//
 
 export default async (req, res) => {
   switch (req.method) {
@@ -10,7 +10,7 @@ export default async (req, res) => {
       const slug = formatSlug(req.body.slug)
 
       if (btflLinkUrlRegex.test(url)) {
-        return res.status(400).send("You can't link to a btfl.link address.")
+        return res.status(400).send("You can't link to a schort.me address.")
       }
 
       const { data: existingRedirect } = await get(slug)
