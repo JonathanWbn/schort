@@ -16,9 +16,6 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={caption.className}>
-      <head>
-        <link rel="shortcut icon" href="/favicon.svg" />
-      </head>
       <body className="bg-white">{children}</body>
     </html>
   )

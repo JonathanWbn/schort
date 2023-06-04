@@ -23,6 +23,6 @@ export const config = {
      * - _next/static (static files)
      * - favicon.ico (favicon file)
      */
-    '/:path((?!api|_next/static|favicon.svg).*)',
+    '/:path((?!api|_next/static|favicon.ico).*)',
   ],
 }

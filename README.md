@@ -13,6 +13,6 @@ The name is a German take on "short", as in "short link".
 
 - frontend is [React](https://reactjs.org/) with [Next](https://nextjs.org/)
 - data fetching [Server Actions](https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions)
-- fast redirects with [Next Middleware](https://nextjs.org/docs/advanced-features/middleware)
+- fast redirects with [Next Middleware](https://nextjs.org/docs/app/building-your-application/routing/middleware)
 - hosted on [Vercel](https://vercel.com/)
-- database is [Redis](https://redis.io/) on [Upstash](https://upstash.com/redis)
+- database is [Redis](https://redis.io/) on [Vercel KV](https://vercel.com/storage/kv)
