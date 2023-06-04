@@ -123,11 +123,6 @@
   resolved "https://registry.yarnpkg.com/@next/env/-/env-13.4.4.tgz#46b620f6bef97fe67a1566bf570dbb791d40c50a"
   integrity sha512-q/y7VZj/9YpgzDe64Zi6rY1xPizx80JjlU2BTevlajtaE3w1LqweH1gGgxou2N7hdFosXHjGrI4OUvtFXXhGLg==
 
-"@next/font@^13.1.0":
-  version "13.1.0"
-  resolved "https://registry.yarnpkg.com/@next/font/-/font-13.1.0.tgz#2f344ebd64013c3f08991df5995f6900e2077941"
-  integrity sha512-9+c2eWoeLftcGAul1fiXD8lL4o4/0beQrz2/0h0B0VV5AWrqCCfj/204quUxdp541ab+NCWVX/m49qjbqFMaFA==
-
 "@next/swc-darwin-arm64@13.4.4":
   version "13.4.4"
   resolved "https://registry.yarnpkg.com/@next/swc-darwin-arm64/-/swc-darwin-arm64-13.4.4.tgz#8c14083c2478e2a9a8d140cce5900f76b75667ff"
