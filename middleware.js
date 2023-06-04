@@ -1,11 +1,5 @@
-import { Redis } from '@upstash/redis'
-import 'isomorphic-fetch'
+import { kv } from '@vercel/kv'
 import { NextResponse } from 'next/server'
-
-const redis = new Redis({
-  url: process.env.UPSTASH_REDIS_REST_URL,
-  token: process.env.UPSTASH_REDIS_REST_TOKEN,
-})
 
 export async function middleware(req) {
   const [, path] = req.nextUrl.pathname.split('/')
@@ -14,7 +8,7 @@ export async function middleware(req) {
     return
   }
 
-  const data = await redis.get(path)
+  const data = await kv.get(path)
 
   if (data) {
     return NextResponse.redirect(data)

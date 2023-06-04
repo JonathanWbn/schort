@@ -8,8 +8,7 @@
     "fixlint": "eslint . --fix && prettier --write \"**/*.{js,json,md}\""
   },
   "dependencies": {
-    "@upstash/redis": "^1.21.0",
-    "isomorphic-fetch": "^3.0.0",
+    "@vercel/kv": "^0.2.1",
     "next": "^13.4.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
