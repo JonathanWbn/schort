@@ -2,13 +2,12 @@
 
 import { useReducer } from 'react'
 
-import { formatSlug } from '../utils'
 import { saveRedirect } from './actions'
 
 function reducer(state, action) {
   switch (action.type) {
     case 'SET_SLUG':
-      return { ...state, slug: action.payload, notification: null }
+      return { ...state, slug: action.payload.replace(/ /g, '').toLowerCase(), notification: null }
     case 'SET_URL':
       return { ...state, url: action.payload, notification: null }
     case 'ERROR':
@@ -83,7 +82,7 @@ export default function Form() {
             value={slug}
             placeholder="e.g. cute-dog-pi"
             id="slug"
-            onChange={(e) => dispatch({ type: 'SET_SLUG', payload: formatSlug(e.target.value) })}
+            onChange={(e) => dispatch({ type: 'SET_SLUG', payload: e.target.value })}
             className="text-accent p-3 sm:p-4 pl-0 sm:pl-0 text-sm sm:text-base placeholder-accent placeholder-opacity-40 focus:outline-none transition-colors flex-grow"
           />
         </div>
