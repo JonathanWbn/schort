@@ -12,7 +12,7 @@ The name is a German take on "short", as in "short link".
 ### Stack
 
 - frontend is [React](https://reactjs.org/) with [Next](https://nextjs.org/)
-- API with [Next API Routes](https://nextjs.org/docs/api-routes/introduction)
+- data fetching [Server Actions](https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions)
 - fast redirects with [Next Middleware](https://nextjs.org/docs/advanced-features/middleware)
 - hosted on [Vercel](https://vercel.com/)
 - database is [Redis](https://redis.io/) on [Upstash](https://upstash.com/redis)
