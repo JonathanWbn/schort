@@ -3,6 +3,7 @@
 import { useReducer } from 'react'
 
 import { formatSlug } from '../utils'
+import { saveRedirect } from './actions'
 
 function reducer(state, action) {
   switch (action.type) {
@@ -37,33 +38,27 @@ export default function Form() {
     isLoading: false,
   })
 
-  async function onSubmit(e) {
-    e.preventDefault()
+  async function onAction() {
+    const isValidSlug = /^[a-z0-9-]+$/.test(slug)
+    if (!isValidSlug) {
+      dispatch({ type: 'ERROR', payload: 'Your slug shall only include numerals, letters and/or hyphens.' })
+      return
+    }
 
-    try {
-      const isValidSlug = /^[a-z0-9-]+$/.test(slug)
-      if (!isValidSlug) {
-        dispatch({ type: 'ERROR', payload: 'Your slug shall only include numerals, letters and/or hyphens.' })
-        return
-      }
+    dispatch({ type: 'START_REQUEST' })
 
-      dispatch({ type: 'START_REQUEST' })
+    const response = await saveRedirect(slug, url)
 
-      const response = await fetch('/api/redirect', {
-        method: 'POST',
-        body: JSON.stringify({ slug, url }),
-        headers: { 'Content-Type': 'application/json' },
-      }).then((res) => (res.ok ? res.json() : res.text().then((text) => Promise.reject(text))))
-
+    if (response.success) {
       dispatch({ type: 'SUCCESS', payload: 'Successfully created link.', slug: response.slug })
-    } catch (error) {
-      dispatch({ type: 'ERROR', payload: error || 'Something went wrong. :/' })
+    } else {
+      dispatch({ type: 'ERROR', payload: response.error || 'Something went wrong. :/' })
     }
   }
 
   return (
     <>
-      <form onSubmit={onSubmit} className="mt-10 flex flex-col w-full max-w-sm">
+      <form action={onAction} className="mt-10 flex flex-col w-full max-w-sm">
         <div className="flex mb-0.5 border-b-2 border-accent border-opacity-50 focus-within:border-opacity-100">
           <label htmlFor="url" className="text-sm sm:text-base text-accent p-3 sm:p-4 w-14">
             URL
