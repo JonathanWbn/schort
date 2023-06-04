@@ -1,6 +1,5 @@
 'use client'
 
-import classnames from 'classnames'
 import { useReducer } from 'react'
 
 import { formatSlug } from '../utils'
@@ -103,18 +102,18 @@ export default function Form() {
       {notification && (
         <div className="relative w-full max-w-sm">
           <div
-            className={classnames(
+            className={[
               'w-full mt-6 absolute p-3 border rounded',
-              notification.type === 'error' && 'border-red-600',
-              notification.type === 'success' && 'border-green-600'
-            )}
+              notification.type === 'error' ? 'border-red-600' : '',
+              notification.type === 'success' ? 'border-green-600' : '',
+            ].join(' ')}
           >
             <p
-              className={classnames(
+              className={[
                 'text-lg',
-                notification.type === 'error' && 'text-red-600',
-                notification.type === 'success' && 'text-green-600'
-              )}
+                notification.type === 'error' ? 'text-red-600' : '',
+                notification.type === 'success' ? 'text-green-600' : '',
+              ].join(' ')}
             >
               {notification.message}{' '}
             </p>
@@ -127,11 +126,11 @@ export default function Form() {
               </button>
             )}
             <button
-              className={classnames(
+              className={[
                 'absolute top-1 right-2 text-md leading-none',
-                notification.type === 'error' && 'text-red-600',
-                notification.type === 'success' && 'text-green-600'
-              )}
+                notification.type === 'error' ? 'text-red-600' : '',
+                notification.type === 'success' ? 'text-green-600' : '',
+              ].join(' ')}
               onClick={() => dispatch({ type: 'CLOSE_NOTIFICATION' })}
             >
               x
