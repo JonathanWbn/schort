@@ -1,7 +1,11 @@
-import { get, auth } from '@upstash/redis'
+import { Redis } from '@upstash/redis'
+import 'isomorphic-fetch'
 import { NextResponse } from 'next/server'
 
-auth(process.env.UPSTASH_REDIS_REST_URL, process.env.UPSTASH_REDIS_REST_TOKEN)
+const redis = new Redis({
+  url: process.env.UPSTASH_REDIS_REST_URL,
+  token: process.env.UPSTASH_REDIS_REST_TOKEN,
+})
 
 export async function middleware(req) {
   const [, path] = req.nextUrl.pathname.split('/')
@@ -10,7 +14,7 @@ export async function middleware(req) {
     return
   }
 
-  const { data } = await get(path)
+  const data = await redis.get(path)
 
   if (data) {
     return NextResponse.redirect(data)

@@ -1,7 +1,13 @@
-import { get, set } from '@upstash/redis'
+import { Redis } from '@upstash/redis'
+import 'isomorphic-fetch'
 import { formatSlug } from '../utils'
 
 const btflLinkUrlRegex = /^https?:\/\/schort\.me\//
+
+const redis = new Redis({
+  url: process.env.UPSTASH_REDIS_REST_URL,
+  token: process.env.UPSTASH_REDIS_REST_TOKEN,
+})
 
 export default async (req, res) => {
   switch (req.method) {
@@ -13,11 +19,11 @@ export default async (req, res) => {
         return res.status(400).send("You can't link to a schort.me address.")
       }
 
-      const { data: existingRedirect } = await get(slug)
+      const existingRedirect = await redis.get(slug)
 
       if (existingRedirect) res.status(409).send('This slug is already taken.')
       else {
-        await set(slug, url)
+        await redis.set(slug, url)
         res.json({ success: true, slug })
       }
       break

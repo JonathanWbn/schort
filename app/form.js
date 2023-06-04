@@ -80,16 +80,16 @@ export default function Form() {
           />
         </div>
         <div className="flex mb-5 border-b-2 border-accent border-opacity-50 focus-within:border-opacity-100">
-          <label htmlFor="slug" className="text-sm sm:text-base text-accent p-3 sm:p-4 w-14">
-            Slug
+          <label htmlFor="slug" className="text-sm sm:text-base text-accent-light p-3 pr-1 sm:p-4 sm:pr-1">
+            https://schort.me/
           </label>
           <input
             required
             value={slug}
-            placeholder="e.g. join-call"
+            placeholder="e.g. cute-dog-pi"
             id="slug"
             onChange={(e) => dispatch({ type: 'SET_SLUG', payload: formatSlug(e.target.value) })}
-            className="text-accent p-3 sm:p-4 text-sm sm:text-base placeholder-accent placeholder-opacity-40 focus:outline-none transition-colors flex-grow"
+            className="text-accent p-3 sm:p-4 pl-0 sm:pl-0 text-sm sm:text-base placeholder-accent placeholder-opacity-40 focus:outline-none transition-colors flex-grow"
           />
         </div>
         <button
