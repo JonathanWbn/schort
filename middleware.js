@@ -8,7 +8,11 @@ export async function middleware(req) {
     return
   }
 
+  console.log('Checking for redirect:', path)
+
   const data = await kv.get(path)
+
+  console.log('Redirect data:', data)
 
   if (data) {
     return NextResponse.redirect(data)
