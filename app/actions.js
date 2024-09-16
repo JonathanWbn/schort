@@ -9,6 +9,8 @@ export async function saveRedirect(slug, url) {
     return { success: false, error: "You can't link to a schort.me address." }
   }
 
+  console.log('saving redirect', slug, url)
+
   const existingRedirect = await kv.get(slug)
 
   if (existingRedirect) {
