@@ -160,7 +160,7 @@ export default function Form() {
 								}
 								className='text-white text-sm bg-emerald-600 rounded-sm p-2 w-full mt-4'
 							>
-								Copy {`schort.me/${notification.slug}`}
+								Copy schort.me/{notification.slug}
 							</button>
 						)}
 						<button
