@@ -4,14 +4,15 @@
   "author": "Jonathan Wieben",
   "license": "MIT",
   "scripts": {
+    "vercel-build": "next build",
     "lint": "eslint . && prettier -c \"**/*.{js,json,md}\"",
     "fixlint": "eslint . --fix && prettier --write \"**/*.{js,json,md}\""
   },
   "dependencies": {
     "@vercel/kv": "^3.0.0",
-    "next": "^13.4.4",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "next": "^15.4.6",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.1.0",
