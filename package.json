@@ -1,27 +1,23 @@
 {
-  "name": "schort",
-  "description": "The only URL shortener you will ever need.",
-  "author": "Jonathan Wieben",
-  "license": "MIT",
-  "scripts": {
-    "vercel-build": "next build",
-    "lint": "eslint . && prettier -c \"**/*.{js,json,md}\"",
-    "fixlint": "eslint . --fix && prettier --write \"**/*.{js,json,md}\""
-  },
-  "dependencies": {
-    "@vercel/kv": "^3.0.0",
-    "next": "^15.4.6",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1"
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.1.0",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^7.16.0",
-    "eslint-plugin-react": "^7.22.0",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "postcss": "^8.2.10",
-    "prettier": "^2.2.1",
-    "tailwindcss": "^2.0.2"
-  }
+	"name": "schort",
+	"description": "The only URL shortener you will ever need.",
+	"author": "Jonathan Wieben",
+	"license": "MIT",
+	"scripts": {
+		"vercel-build": "next build",
+		"check": "biome check",
+		"check-and-fix": "biome check --write"
+	},
+	"dependencies": {
+		"@vercel/kv": "^3.0.0",
+		"next": "^15.4.6",
+		"react": "^19.1.1",
+		"react-dom": "^19.1.1"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.2.0",
+		"autoprefixer": "^10.1.0",
+		"postcss": "^8.2.10",
+		"tailwindcss": "^2.0.2"
+	}
 }
