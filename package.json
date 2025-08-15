@@ -16,8 +16,8 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.2.0",
-		"autoprefixer": "^10.1.0",
-		"postcss": "^8.2.10",
-		"tailwindcss": "^2.0.2"
+		"@tailwindcss/postcss": "^4.1.12",
+		"postcss": "^8.5.6",
+		"tailwindcss": "^4.1.12"
 	}
 }

@@ -1,3 +1,10 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+	--color-accent: #f26e03;
+	--color-accent-light: #fdb57c;
+}
+
+button {
+	cursor: pointer;
+}

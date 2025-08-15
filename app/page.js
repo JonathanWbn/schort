@@ -3,11 +3,11 @@ import Form from './form'
 export default function Page() {
 	return (
 		<div className='container mx-auto h-screen flex flex-col p-4'>
-			<main className='container mx-auto flex-grow flex flex-col items-center mt-10 sm:mt-0 sm:justify-center'>
+			<main className='container mx-auto grow flex flex-col items-center mt-10 sm:mt-0 sm:justify-center'>
 				<h1 className='text-accent text-4xl sm:text-5xl'>
 					schort<span className='text-accent-light'>.me</span>
 				</h1>
-				<p className='text-xl sm:text-2xl text-accent text-opacity-90 mb-5'>
+				<p className='text-xl sm:text-2xl text-accent/90 mb-5'>
 					just another URL shortener.
 				</p>
 				<Form />

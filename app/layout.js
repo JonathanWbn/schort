@@ -9,7 +9,11 @@ export const metadata = {
 	description: 'The last URL shortener you will ever need.',
 	author: 'Jonathan Wieben',
 	keywords: 'schort url shortener link',
-	viewport: 'initial-scale=1.0, width=device-width',
+}
+
+export const viewport = {
+	initialScale: 1,
+	width: 'device-width',
 }
 
 export default function RootLayout({ children }) {

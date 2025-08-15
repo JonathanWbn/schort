@@ -86,7 +86,7 @@ export default function Form() {
 	return (
 		<>
 			<form action={onAction} className='mt-10 flex flex-col w-full max-w-sm'>
-				<div className='flex mb-0.5 border-b-2 border-accent border-opacity-50 focus-within:border-opacity-100'>
+				<div className='flex mb-0.5 border-b-2 border-accent/50 focus-within:border-accent/100'>
 					<label
 						htmlFor={urlId}
 						className='text-sm sm:text-base text-accent p-3 sm:p-4 w-14'
@@ -103,10 +103,10 @@ export default function Form() {
 						}
 						autoFocus
 						placeholder='The URL you want to shorten.'
-						className='text-accent p-3 sm:p-4 text-sm sm:text-base placeholder-accent placeholder-opacity-40 focus:outline-none transition-colors flex-grow'
+						className='text-accent p-3 sm:p-4 text-sm sm:text-base placeholder-accent/40 focus:outline-hidden transition-colors grow'
 					/>
 				</div>
-				<div className='flex mb-5 border-b-2 border-accent border-opacity-50 focus-within:border-opacity-100'>
+				<div className='flex mb-5 border-b-2 border-accent/50 focus-within:border-accent/100'>
 					<label
 						htmlFor={slugId}
 						className='text-sm sm:text-base text-accent-light p-3 pr-1 sm:p-4 sm:pr-1'
@@ -121,12 +121,12 @@ export default function Form() {
 						onChange={(e) =>
 							dispatch({ type: 'SET_SLUG', payload: e.target.value })
 						}
-						className='text-accent p-3 sm:p-4 pl-0 sm:pl-0 text-sm sm:text-base placeholder-accent placeholder-opacity-40 focus:outline-none transition-colors flex-grow'
+						className='text-accent p-3 sm:p-4 pl-0 sm:pl-0 text-sm sm:text-base placeholder-accent/40 focus:outline-hidden transition-colors grow'
 					/>
 				</div>
 				<button
 					type='submit'
-					className='text-base bg-accent text-white transition-colors focus:outline-none border-2 rounded border-accent focus:bg-white focus:text-accent hover:bg-white hover:text-accent p-3 sm:p-4 font-bold disabled:cursor-wait'
+					className='text-base bg-accent text-white transition-colors focus:outline-hidden border-2 rounded-sm border-accent focus:bg-white focus:text-accent hover:bg-white hover:text-accent p-3 sm:p-4 font-bold disabled:cursor-wait'
 					disabled={isLoading}
 				>
 					Create
@@ -136,16 +136,16 @@ export default function Form() {
 				<div className='relative w-full max-w-sm'>
 					<div
 						className={[
-							'w-full mt-6 absolute p-3 border rounded',
+							'w-full mt-6 absolute p-3 border rounded-sm',
 							notification.type === 'error' ? 'border-red-600' : '',
-							notification.type === 'success' ? 'border-green-600' : '',
+							notification.type === 'success' ? 'border-emerald-600' : '',
 						].join(' ')}
 					>
 						<p
 							className={[
 								'text-lg',
 								notification.type === 'error' ? 'text-red-600' : '',
-								notification.type === 'success' ? 'text-green-600' : '',
+								notification.type === 'success' ? 'text-emerald-600' : '',
 							].join(' ')}
 						>
 							{notification.message}{' '}
@@ -158,7 +158,7 @@ export default function Form() {
 										`https://schort.me/${notification.slug}`,
 									)
 								}
-								className='text-white text-sm bg-green-600 rounded p-2 w-full mt-4'
+								className='text-white text-sm bg-emerald-600 rounded-sm p-2 w-full mt-4'
 							>
 								Copy {`schort.me/${notification.slug}`}
 							</button>
@@ -168,7 +168,7 @@ export default function Form() {
 							className={[
 								'absolute top-1 right-2 text-md leading-none',
 								notification.type === 'error' ? 'text-red-600' : '',
-								notification.type === 'success' ? 'text-green-600' : '',
+								notification.type === 'success' ? 'text-emerald-600' : '',
 							].join(' ')}
 							onClick={() => dispatch({ type: 'CLOSE_NOTIFICATION' })}
 						>
