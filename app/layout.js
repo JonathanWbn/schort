@@ -1,7 +1,7 @@
 import './globals.css'
 
-import { PT_Sans_Caption } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { PT_Sans_Caption } from 'next/font/google'
 
 const caption = PT_Sans_Caption({ weight: ['400', '700'], subsets: ['latin'] })
 
