@@ -1,6 +1,7 @@
 import './globals.css'
 
 import { PT_Sans_Caption } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/next'
 
 const caption = PT_Sans_Caption({ weight: ['400', '700'], subsets: ['latin'] })
 
@@ -19,6 +20,7 @@ export const viewport = {
 export default function RootLayout({ children }) {
 	return (
 		<html lang='en' className={caption.className}>
+			<Analytics />
 			<body className='bg-white'>{children}</body>
 		</html>
 	)
