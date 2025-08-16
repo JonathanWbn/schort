@@ -1,5 +1,7 @@
-import { kv } from '@vercel/kv'
+import { Redis } from '@upstash/redis'
 import { NextResponse } from 'next/server'
+
+const redis = Redis.fromEnv()
 
 export async function middleware(req) {
 	const [, path] = req.nextUrl.pathname.split('/')
@@ -10,7 +12,7 @@ export async function middleware(req) {
 
 	console.log('Checking for redirect:', path)
 
-	const data = await kv.get(path)
+	const data = await redis.get(path)
 
 	console.log('Redirect data:', data)
 

@@ -1,7 +1,8 @@
 'use server'
 
-import { kv } from '@vercel/kv'
+import { Redis } from '@upstash/redis'
 
+const redis = Redis.fromEnv()
 const btflLinkUrlRegex = /^https?:\/\/schort\.me\//
 
 export async function saveRedirect(slug, url) {
@@ -11,12 +12,12 @@ export async function saveRedirect(slug, url) {
 
 	console.log('saving redirect', slug, url)
 
-	const existingRedirect = await kv.get(slug)
+	const existingRedirect = await redis.get(slug)
 
 	if (existingRedirect) {
 		return { success: false, error: 'This slug is already taken.' }
 	} else {
-		await kv.set(slug, url)
+		await redis.set(slug, url)
 		return { success: true, slug }
 	}
 }

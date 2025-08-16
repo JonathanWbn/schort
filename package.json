@@ -9,7 +9,7 @@
 		"check-and-fix": "biome check --write"
 	},
 	"dependencies": {
-		"@vercel/kv": "^3.0.0",
+		"@upstash/redis": "^1.35.3",
 		"next": "^15.4.6",
 		"react": "^19.1.1",
 		"react-dom": "^19.1.1"
