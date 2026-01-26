@@ -1,4 +1,5 @@
 import Form from './form'
+import Impressum from './impressum'
 
 export default function Page() {
 	return (
@@ -29,13 +30,7 @@ export default function Page() {
 				>
 					GitHub
 				</a>
-				<a
-					target='_blank'
-					rel='noopener noreferrer'
-					href='https://jwieben.notion.site/Impressum-7be1b0e1a1384c1cb9362bd1aef963d1'
-				>
-					Impressum
-				</a>
+				<Impressum />
 			</footer>
 		</div>
 	)
