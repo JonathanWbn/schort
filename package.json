@@ -1,25 +1,25 @@
 {
-	"name": "schort",
-	"description": "The only URL shortener you will ever need.",
-	"author": "Jonathan Wieben",
-	"license": "MIT",
-	"scripts": {
-		"vercel-build": "next build",
-		"check": "biome check",
-		"check-and-fix": "biome check --write"
-	},
-	"dependencies": {
-		"@upstash/redis": "^1.35.3",
-		"@vercel/analytics": "^1.5.0",
-		"@vercel/speed-insights": "^1.2.0",
-		"next": "^15.4.6",
-		"react": "^19.1.1",
-		"react-dom": "^19.1.1"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "2.2.0",
-		"@tailwindcss/postcss": "^4.1.12",
-		"postcss": "^8.5.6",
-		"tailwindcss": "^4.1.12"
-	}
+  "name": "schort",
+  "description": "The only URL shortener you will ever need.",
+  "author": "Jonathan Wieben",
+  "license": "MIT",
+  "scripts": {
+    "vercel-build": "next build",
+    "check": "biome check",
+    "check-and-fix": "biome check --write"
+  },
+  "dependencies": {
+    "@upstash/redis": "^1.35.3",
+    "@vercel/analytics": "^1.5.0",
+    "@vercel/speed-insights": "^1.2.0",
+    "next": "15.4.10",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.2.0",
+    "@tailwindcss/postcss": "^4.1.12",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.12"
+  }
 }
