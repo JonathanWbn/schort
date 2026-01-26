@@ -21,11 +21,11 @@ export default function Impressum() {
 					>
 						<h2 className='text-2xl font-bold mb-4 text-accent'>Impressum</h2>
 						<p className='text-gray-600 mb-4'>Angaben gemäß § 5 TMG</p>
-						<p>Jonathan Wieben</p>
-						<p>Alfredstr. 61</p>
-						<p className='mb-4'>20535 Hamburg</p>
-						<p className='font-semibold'>Kontakt:</p>
-						<p>E-Mail: jwieben@hey.com</p>
+						<p className='text-gray-700'>Jonathan Wieben</p>
+						<p className='text-gray-700'>Alfredstr. 61</p>
+						<p className='text-gray-700 mb-4'>20535 Hamburg</p>
+						<p className='text-gray-700 font-semibold'>Kontakt:</p>
+						<p className='text-gray-700'>E-Mail: jwieben@hey.com</p>
 						<button
 							onClick={() => setOpen(false)}
 							className='mt-6 px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300'
